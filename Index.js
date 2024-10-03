@@ -21,6 +21,7 @@
             ]),
         ]);
 
-
+        //React works inside this root only
+        //We can create a root for any part of application. it can be header, footer, drawer etc or it can be whole application
         const root = ReactDOM.createRoot(document.getElementById("root"));
         root.render(component);
