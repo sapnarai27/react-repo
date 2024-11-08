@@ -11,10 +11,12 @@
 <body>
     <div>Hello Header</div> <!-- this div in not part of React  -->
     <div id="root"></div>
-    <!-- CDN LINKS -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="Index.js"></script>
+    <!-- CDN LINKS --> 
+     <!-- CDN links are not required as we are install react and react-dom packages from npm -->
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
+    
+    <script type="module" src="Index.js"></script>
 
     <!-- 
         Order of obove 3 files should be in same sequence.
