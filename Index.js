@@ -1,4 +1,6 @@
-       
+       // importing react and react-dom from node module which we have installed using npm 
+       import React from "react";
+       import ReactDOM from "react-dom";
        {/* <div id="parent">
          <div id='child1'>
             <h1>I am an h1 tag</h1>
