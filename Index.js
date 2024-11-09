@@ -1,29 +1,42 @@
-       // importing react and react-dom from node module which we have installed using npm 
-       import React from "react";
-       import ReactDOM from "react-dom";
-       {/* <div id="parent">
-         <div id='child1'>
-            <h1>I am an h1 tag</h1>
-            <h2>I am an h2 tag</h2>
-         </div>
-         <div id='child2'>
-            <h1>I am an h1 tag</h1>
-            <h2>I am an h2 tag</h2>
-         </div>
-       </div> */}
-       
-        const component = React.createElement('div', {id: "parent"},[
-            React.createElement('div', {id: 'child1'},[
-                React.createElement('h1', {}, 'I am an h1 tag'),
-                React.createElement('h2', {}, 'I am an h2 tag')
-            ]),
-            React.createElement('div', {id: 'child2'},[
-                React.createElement('h1', {}, 'I am an h1 tag'),
-                React.createElement('h2', {}, 'I am an h2 tag')
-            ]),
-        ]);
+// importing react and react-dom from node module which we have installed using npm
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-        //React works inside this root only
-        //We can create a root for any part of application. it can be header, footer, drawer etc or it can be whole application
-        const root = ReactDOM.createRoot(document.getElementById("root"));
-        root.render(component);
+//React Element
+const reactelement = (
+  <h1 className="heading">Hello world from react element </h1>
+);
+
+//React functional Component
+
+const HeadingComponent = () => (
+  <div>
+    <h1 className="heading">Hello world from react component </h1>
+  </div>
+);
+
+const Title = () => (
+    <div>Title of the page</div>
+)
+
+//Component Composition
+const MainContainer = () => (
+    <>
+    <HeadingComponent/>
+    {HeadingComponent()}  {/*Another way to call component */}
+    <HeadingComponent></HeadingComponent> {/**3rd way to call component */}
+    <Title />
+    {reactelement}
+    </>
+)
+ 
+//React works inside this root only
+//We can create a root for any part of application. it can be header, footer, drawer etc or it can be whole application
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+//rendering react element
+//root.render(reactelement);
+
+//rendering funtional component
+
+root.render(<MainContainer/>);
