@@ -1,15 +1,51 @@
 import ResCard from "./ResCard";
-import { restList } from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 const BodyContainer = () => {
-  const [restListData, setRestListData] = useState(restList);
-  return (
+  const [restListData, setRestListData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () =>{
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const jsonData = await data.json();
+
+    //optional chaining
+    const finalData =
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    setRestListData(finalData);
+    setFilteredData(finalData)
+  }
+
+  const onClickSearch = () =>{
+    const filteredData = restListData.filter((res)=>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
+    )
+    setFilteredData(filteredData);
+  }
+
+  //conditional rendering
+
+  return restListData.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body-container">
-      <div className="btn-element">
+      <div className="filter">
+        <div className="serach">
+          <input type="text" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+          <button className="search-btn" onClick={onClickSearch}>Search</button>
+        </div>
         <button
           onClick={() => {
             const updatedRestList = restListData.filter(
-              (res) => res.data.avgRating > 4
+              (res) => res.info.avgRating > 4.5
             );
             setRestListData(updatedRestList);
           }}
@@ -18,8 +54,8 @@ const BodyContainer = () => {
         </button>
       </div>
       <div className="card-list-container">
-        {restListData.map((resData) => (
-          <ResCard key={resData.data.id} resData={resData} />
+        {filteredData.map((resData) => (
+          <ResCard key={resData.info.id} resData={resData} />
         ))}
       </div>
     </div>
