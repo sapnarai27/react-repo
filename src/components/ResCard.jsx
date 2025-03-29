@@ -23,7 +23,7 @@ const ResCard = (props) => {
       <h2>{name}</h2>
       <h3>{avgRating}</h3>
       <h4>{costForTwo}</h4>
-      <h4>{cuisines.join(",")}</h4>
+      <h4>{cuisines.join(", ")}</h4>
     </div>
   );
 };

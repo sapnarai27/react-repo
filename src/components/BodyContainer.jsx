@@ -1,10 +1,12 @@
 import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { useNavigate } from "react-router-dom";
 const BodyContainer = () => {
   const [restListData, setRestListData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -31,6 +33,10 @@ const BodyContainer = () => {
     setFilteredData(filteredData);
   }
 
+  const onClickCard = (id)=>{
+    navigate(`/restDetails/${id}`)
+  }
+
   //conditional rendering
 
   return restListData.length === 0 ? (
@@ -47,7 +53,7 @@ const BodyContainer = () => {
             const updatedRestList = restListData.filter(
               (res) => res.info.avgRating > 4.5
             );
-            setRestListData(updatedRestList);
+            setFilteredData(updatedRestList);
           }}
         >
           Find Top Rated Restaurants{" "}
@@ -55,7 +61,9 @@ const BodyContainer = () => {
       </div>
       <div className="card-list-container">
         {filteredData.map((resData) => (
-          <ResCard key={resData.info.id} resData={resData} />
+          <div key={resData.info.id} onClick={()=>onClickCard(resData.info.id)}>
+          <ResCard resData={resData} />
+          </div>
         ))}
       </div>
     </div>
