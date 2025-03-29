@@ -43,6 +43,7 @@
     padding: 10px;
     background-color: azure;
     border: 1px solid lightgrey;
+    cursor: pointer;
 }
 .res-image{
     width: 100%;
