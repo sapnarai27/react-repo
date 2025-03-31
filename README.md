@@ -21,3 +21,31 @@
 - Tree Shaking Algorithm  (remove unused code from app)
 - Diffrent for dev and prod bundles
 - 
+
+
+How console will be called in class based components
+/* 
+How lifecycle method are called
+
+====== Mounting Phase =======
+parent contructor
+parent render
+child 1 constructor
+child 1 render
+child 2 constructor
+child 2 render
+child 1 componentDidMount
+child 2 componentDidMount
+parent componentDidMount
+
+======= Updating Phase ===============
+child 1 render
+child 2 render
+Child 1 componentDidUpdate
+Child 2 componentDidUpdate
+
+======== Unmounting phase ============
+Child 1 componentWillUnmount
+Child 2 componentWillUnmount
+
+*/
