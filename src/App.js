@@ -1,5 +1,5 @@
 // importing react and react-dom from node module which we have installed using npm
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
 import Header from "./components/Header";
@@ -9,6 +9,9 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import ErrorComponent from "./components/ErrorComponent";
 import RestaurantDetails from "./components/RestaurantDeatils";
+// import Grocery from "./components/Grocery";
+
+const Grocery = lazy(() => import("./components/Grocery"));
 
 const App = () => (
   <>
@@ -17,7 +20,6 @@ const App = () => (
   </>
 );
 
-
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -25,24 +27,33 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <BodyContainer />
+        element: <BodyContainer />,
       },
       {
         path: "/about",
-        element: <About />
+        element: <About />,
       },
       {
         path: "/contact",
-        element: <Contact />
+        element: <Contact />,
       },
       {
         path: "/restDetails/:resId",
-        element: <RestaurantDetails />
-      }
+        element: <RestaurantDetails />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            {" "}
+            <Grocery />
+          </Suspense>
+        ),
+      },
     ],
-    errorElement: <ErrorComponent /> // If we don't provide this errorElement React Router itself shows error in UI if user enters wrong path
+    errorElement: <ErrorComponent />, // If we don't provide this errorElement React Router itself shows error in UI if user enters wrong path
   },
-])
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -70,7 +81,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />); */
 
 // https://www.w3schools.com/react/react_router.asp
-
 
 // Layout.js
 
