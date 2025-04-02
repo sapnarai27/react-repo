@@ -42,13 +42,14 @@ const BodyContainer = () => {
   return restListData.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body-container">
-      <div className="filter">
-        <div className="serach">
-          <input type="text" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
-          <button className="search-btn" onClick={onClickSearch}>Search</button>
+    <div className="flex flex-col">
+      <div className="flex gap-2 m-2">
+        <div className="flex gap-2">
+          <input className="border-1 rounded-sm" type="text" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+          <button className="bg-gray-500 text-white p-1 rounded-sm cursor-pointer" onClick={onClickSearch}>Search</button>
         </div>
         <button
+          className="bg-gray-500 text-white p-1 rounded-sm cursor-pointer"
           onClick={() => {
             const updatedRestList = restListData.filter(
               (res) => res.info.avgRating > 4.5
@@ -59,7 +60,7 @@ const BodyContainer = () => {
           Find Top Rated Restaurants{" "}
         </button>
       </div>
-      <div className="card-list-container">
+      <div className="flex gap-7 flex-wrap p-3">
         {filteredData.map((resData) => (
           <div key={resData.info.id} onClick={()=>onClickCard(resData.info.id)}>
           <ResCard resData={resData} />

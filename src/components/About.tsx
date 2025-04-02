@@ -17,7 +17,7 @@ class About extends React.Component {
   render() {
     console.log("parent render");
     return (
-      <div>
+      <div className="p-5">
         <h1>About Us</h1>
         <h2>This is food delivery app</h2>
         <User
@@ -25,7 +25,6 @@ class About extends React.Component {
           location="Pune"
           address="Dange Chowk, Pune, Maharashtra"
         />
-        <br />
         <UserClass sNo="1" location="Munbai" address="Munbai, Maharashtra" />
         <UserClass
           sNo="2"

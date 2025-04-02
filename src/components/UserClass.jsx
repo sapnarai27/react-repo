@@ -16,9 +16,9 @@ class UserClass extends React.Component {
     const jsonData = await data.json();
     this.setState(jsonData);
 
-    this.timer = setInterval(()=>{
-      console.log("called in every 1 second")
-    }, 1000)
+    this.timer = setInterval(() => {
+      console.log("called in every 1 second");
+    }, 1000);
   }
   componentDidUpdate() {
     console.log(`Child ${this.props.sNo} componentDidUpdate`);
@@ -33,9 +33,10 @@ class UserClass extends React.Component {
     const { count, name, company, bio } = this.state;
 
     return (
-      <div className="user-container">
-        <h1>Count: {count}</h1>
+      <div className="border-1 p-5 m-2">
+        <div>Count: {count}</div>
         <button
+          className="bg-gray-500 text-white p-1 rounded-sm cursor-pointer"
           onClick={() => {
             this.setState({
               count: this.state.count + 1, // instaed of this.state.count we can use "count". we have alredy destructed it.
@@ -43,11 +44,11 @@ class UserClass extends React.Component {
           }}>
           Increase the count
         </button>
-        <h5>Name: {name}</h5>
-        <h5>Company: {company}</h5>
-        <h5>Bio: {bio}</h5>
-        <h5>Location: {location} </h5>
-        <h5>Address: {address}</h5>
+        <div>Name: {name}</div>
+        <div>Company: {company}</div>
+        <div>Bio: {bio}</div>
+        <div>Location: {location} </div>
+        <div>Address: {address}</div>
       </div>
     );
   }

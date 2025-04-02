@@ -32,19 +32,20 @@ const User = ({ sNo, location, address }) => {
   const { name, company, bio } = resData;
 
   return (
-    <div className="user-container">
-      <h1>Count: {count}</h1>
+    <div className="border-1 p-5 m-2">
+      <div>Count: {count}</div>
       <button
+        className="bg-gray-500 text-white p-1 rounded-sm cursor-pointer"
         onClick={() => {
           setCount(count + 1);
         }}>
         Increase the count
       </button>
-      <h5>Name: {name}</h5>
-      <h5>Company: {company}</h5>
-      <h5>Bio: {bio}</h5>
-      <h5>Location: {location} </h5>
-      <h5>Address: {address}</h5>
+      <div>Name: {name}</div>
+      <div>Company: {company}</div>
+      <div>Bio: {bio}</div>
+      <div>Location: {location} </div>
+      <div>Address: {address}</div>
     </div>
   );
 };
