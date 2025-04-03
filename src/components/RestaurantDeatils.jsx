@@ -14,14 +14,14 @@ const RestaurantDetails = () => {
     const {itemCards} = restInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card?.card;
 
     return(
-        <div>
-            <h1>{name}</h1>
-            <h3>Ratings: {avgRating}</h3>
-            <h3>Cost for Two: {costForTwoMessage}</h3>
-            <h3>Cousines: {cuisines.join(", ")}</h3>
+        <div className="m-2 p-7">
+            <div className="font-bold text-xl">{name}</div>
+            <div className="text-amber-500">Ratings: {avgRating}</div>
+            <div>Cost for Two: {costForTwoMessage}</div>
+            <div>Cousines: {cuisines.join(", ")}</div>
 
-            <div>
-                <h2>Menu</h2>
+            <div className="p-5">
+                <div className="font-bold text-xl">Menu : </div>
                 <ul>
                     {itemCards.map(resInfo=>
                        <li key={resInfo.card.info.id}>{resInfo.card.info.name} - Rs. {resInfo.card.info.price/100 || resInfo.card.info.defaultPrice/100}</li>
