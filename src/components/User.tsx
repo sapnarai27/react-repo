@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { USER_API } from "../utils/constants";
 
 const User = ({ sNo, location, address }) => {
   const [count, setCount] = useState(0);
@@ -24,7 +25,7 @@ const User = ({ sNo, location, address }) => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("https://api.github.com/users/sapnarai27");
+    const data = await fetch(USER_API);
     const jsonData = await data.json();
     setResData(jsonData);
   };
