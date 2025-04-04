@@ -1,5 +1,5 @@
 // importing react and react-dom from node module which we have installed using npm
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
 import Header from "./components/Header";
@@ -9,16 +9,33 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import ErrorComponent from "./components/ErrorComponent";
 import RestaurantDetails from "./components/RestaurantDeatils";
+import UserContext from "./context/UserContext";
+import { USER_API } from "./utils/constants";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
-const App = () => (
-  <>
-    <Header />
-    <Outlet />
-  </>
-);
+const App = () => {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = async () => {
+    const data = await fetch(USER_API);
+    const jsonData = await data.json();
+    console.log(jsonData)
+    setUserName(jsonData.name)
+  };
+
+  return (
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName}}>
+      <Header />
+      <Outlet />
+    </UserContext.Provider>
+  );
+};
 
 const appRouter = createBrowserRouter([
   {

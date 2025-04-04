@@ -1,4 +1,5 @@
 import React from "react";
+import { USER_API } from "../utils/constants";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,7 @@ class UserClass extends React.Component {
   }
   async componentDidMount() {
     console.log(`child ${this.props.sNo} componentDidMount`);
-    const data = await fetch("https://api.github.com/users/sapnarai27");
+    const data = await fetch(USER_API);
     const jsonData = await data.json();
     this.setState(jsonData);
 
