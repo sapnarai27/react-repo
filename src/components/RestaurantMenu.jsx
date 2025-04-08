@@ -12,7 +12,7 @@ const RestaurantMenu = ({ menu, showItem, setShowIndex }) => {
         </div>
         <div>{showItem ? "⬆️" : "⬇️"}</div>
       </div>
-      {showItem && <MenuItem itemList={menu.itemCards} />}
+      {showItem && <MenuItem showRemove={false} itemList={menu.itemCards} />}
     </div>
   );
 };
