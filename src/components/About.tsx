@@ -4,8 +4,8 @@ import UserClass from "./UserClass";
 import UserContext from "../context/UserContext";
 
 class About extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     console.log("parent contructor");
   }
 

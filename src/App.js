@@ -11,6 +11,9 @@ import ErrorComponent from "./components/ErrorComponent";
 import RestaurantDetails from "./components/RestaurantDeatils";
 import UserContext from "./context/UserContext";
 import { USER_API } from "./utils/constants";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
+import Cart from "./components/Cart";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -25,15 +28,16 @@ const App = () => {
   const fetchUserData = async () => {
     const data = await fetch(USER_API);
     const jsonData = await data.json();
-    console.log(jsonData)
-    setUserName(jsonData.name)
+    setUserName(jsonData.name);
   };
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName}}>
-      <Header />
-      <Outlet />
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <Header />
+        <Outlet />
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -57,6 +61,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restDetails/:resId",
         element: <RestaurantDetails />,
+      },
+      {
+        path: "/cart",
+        element: <Cart/>
       },
       {
         path: "/grocery",
