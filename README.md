@@ -22,28 +22,6 @@
 - Diffrent for dev and prod bundles
 - 
 
-# Setting up Testing in out App
-- Installed Recat Testing Library
-- Installed Jest
-- Installed babel dependancy (from jest official webside under - using babel section)
-- Configure babel (babel.config.js)
-- Configure parcel config file to disable default babel transpilation
-- Jest configuration 
-    run command "npx jest --init"
-    Would you like to use Typescript for the configuration file? ... no
-    √ Choose the test environment that will be used for testing » jsdom (browser-like)
-    √ Do you want Jest to add coverage reports? ... yes
-    √ Which provider should be used to instrument code for coverage? » babel
-    √ Automatically clear mock calls, instances, contexts and results before every test? ... yes
-
-    It will create the jest.config file after completion
-
-- Install jsdom library (if v>28)
-- Install @babel/preset-react (To make JSX work in test cases)
-- Include @babel/preset-react inside babel config
-- Install @testing-library/jest-dom (All the assertion methods come from this library)
-
-
 
 How console will be called in class based components
 /* 
