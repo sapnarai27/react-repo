@@ -17,7 +17,7 @@ const Header = () => {
     <div className="flex justify-between box-border items-center bg-orange-400 border-1 border-black">
       <img className="h-25 w-25" src={LOGO_URL} />
       <div className="flex gap-2 p-4 m-4">
-        <span>Online Statue:{onlineStatus?"✅":"🔴"}</span>
+        <span>Online Status:{onlineStatus?"✅":"🔴"}</span>
         <Link to="/">Home</Link>
         <Link to="/about">About Us</Link>
         <Link to="/contact">Contact Us</Link>
@@ -27,7 +27,7 @@ const Header = () => {
         
         <button
           onClick={() =>
-            btnName === "Login" ? setBtnName("Log Out") : setBtnName("Login")
+            btnName === "Login" ? setBtnName("Logout") : setBtnName("Login")
           }
           className="bg-blue-500 w-15 text-white rounded-xs cursor-pointer"
         >

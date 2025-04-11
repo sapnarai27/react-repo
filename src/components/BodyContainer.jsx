@@ -50,6 +50,7 @@ const BodyContainer = () => {
       <div className="flex gap-2 m-2">
         <div className="flex gap-2">
           <input
+            data-testid="search-text"
             className="border-1 rounded-sm p-1"
             type="text"
             value={searchText}
@@ -69,9 +70,10 @@ const BodyContainer = () => {
             );
             setFilteredData(updatedRestList);
           }}>
-          Find Top Rated Restaurants{" "}
+          Top Rated Restaurants{" "}
         </button>
         <input
+            data-testid="user-name-text"
             className="border-1 rounded-sm p-1"
             type="text"
             value={loggedInUser}
@@ -81,6 +83,7 @@ const BodyContainer = () => {
       <div className="flex gap-7 flex-wrap p-3">
         {filteredData.map((resData) => (
           <div
+            data-testid='card-container'
             key={resData.info.id}
             onClick={() => onClickCard(resData.info.id)}>
             {resData.info.avgRating > 4.5 ? (
