@@ -19,6 +19,7 @@ const MenuItem = ({ itemList, showRemove }) => {
   return itemList.map((item, index) => (
     <div
       key={item.card.info.id}
+      data-testid="menu-item"
       className="border-b-1 border-gray-200 text-gray-500 py-5 flex min-h-55">
       <div className="w-9/12">
         <div className="text-xl font-bold">{item.card.info.name} </div>

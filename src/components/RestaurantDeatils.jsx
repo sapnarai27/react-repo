@@ -25,7 +25,7 @@ const RestaurantDetails = () => {
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
   return (
-    <div className="p-7 w-6/12 m-auto">
+    <div data-testid="restaurant-details" className="p-7 w-6/12 m-auto">
       <div className="font-bold text-xl">{name}</div>
       <div className="shadow border-1 border-gray-200 rounded-xl p-6 my-2">
         <span className="font-bold">
