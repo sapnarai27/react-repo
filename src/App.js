@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import appStore from "./store/appStore";
 import Cart from "./components/Cart";
 import UserProfile from "./components/UserProfile";
+import DemoHooks from "./components/DemoHooks";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -70,6 +71,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/user-profile",
         element: <UserProfile />,
+      },
+      {
+        path: "/demo-hooks",
+        element: <DemoHooks/>,
       },
       {
         path: "/grocery",
