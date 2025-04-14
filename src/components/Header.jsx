@@ -23,7 +23,9 @@ const Header = () => {
         <Link to="/contact">Contact Us</Link>
         <Link to="/grocery">Grocery Store</Link>
         <Link to="/cart">Cart- ({cartItems.length} items)</Link>
+        <Link to="/demo-hooks">Hooks</Link>
         <Link to="/user-profile"><span className="font-bold text-gray-100">{loggedInUser}</span></Link>
+
         
         <button
           onClick={() =>
